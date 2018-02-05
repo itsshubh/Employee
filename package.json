@@ -1,15 +1,24 @@
 {
   "name": "employee",
   "version": "1.0.0",
-  "description": "A mock employee manager ",
+  "description": "An employee management application",
   "main": "index.html",
   "scripts": {
-    "start": "http-server -a localhost -p 8080 -c-1 ./mock",
+    "start": "http-server -a localhost -p 8081 -c-1 ./mock",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsshubh/Employee.git"
   },
   "author": "Shubham Jain",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsshubh/Employee/issues"
+  },
+  "homepage": "https://github.com/itsshubh/Employee#readme",
   "dependencies": {
-    "angular-toastr": "^2.1.1"
+    "angular-toastr": "^2.1.1",
+    "http-server": "^0.11.1"
   }
 }
