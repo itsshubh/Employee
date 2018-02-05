@@ -1,0 +1,4 @@
+<button class="btn btn-xs btn-primary">Edit</button>       <a class="btn btn-xs"
+ng-class="{true: 'btn-primary', false: 'btn-danger'}[!status]"
+ng-click="status = !status">
+{{!status && 'Activate' || 'Deactivate'}} </a>

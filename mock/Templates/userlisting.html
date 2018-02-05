@@ -1,0 +1,44 @@
+<div class = "row">
+    <!-- side bar starts -->
+    <div class="col-md-offset-1 col-md-2">
+        <nav class="nav-sidebar">
+            <ul class="nav" ng-init = "activeid = 'userlisting'">
+              <li ng-click="activeid='main'" ng-class = "{'active': activeid == 'main'}"  ><a ui-sref="main"><i class="fa fa-home" aria-hidden="true"></i> Dashboard</a></li>
+              <li ng-click="activeid='adduser'" ng-class = "{'active': activeid == 'adduser'}" ><a ui-sref="addUser">Add User</a></li>
+              <li ng-click="activeid='userlisting'" ng-class = "{'active': activeid == 'userlisting'}"><a ui-sref="userListing">User listing</a></li>
+              <li ng-click="activeid='applyLeave'" ng-class = "{'active': activeid == 'applyleave'}"><a ui-sref="applyLeave">Apply Leave</a></li>
+              <li ng-click="activeid='leavelisting'" ng-class = "{'active': activeid == 'leavelisting'}"><a ui-sref="leaveListing">Leave Listing</a></li>
+              <li ng-click="activeid='addrole'" ng-class = "{'active': activeid == 'addrole'}"><a ui-sref="addRole">Add Role</a></li>
+              <li  ng-click="activeid='rolelisting'" ng-class = "{'active': activeid == 'rolelisting'}"><a ui-sref="roleListing">Role Listing</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Side Bar Ends -->
+    <div class="col-md-6 col-md-offset-1">
+      <h1>All Users</h1>
+      <hr/>
+      <!-- <div>
+            <div id = "grid1" ui-grid="{ data : users, columnDefs: columnDefs, enableFiltering : true }" ui-grid-edit ui-grid-cellnav
+            ui-grid-auto-resize class="myGrid"></div>
+      </div> -->
+      <div>
+         <label>Which rows should we export?</label>
+         <select ng-model="export_row_type">
+           <option value='all'>All</option>
+           <option value='selected'>Selected</option>
+         </select>
+         <label>What format would you like?</label>
+         <select ng-model="export_format">
+           <option value='csv'>CSV</option>
+           <option value='pdf'>PDF</option>
+         </select>
+         <button ng-click="export()">Export</button>
+         <!-- <div class="custom-csv-link-location">
+           <label>Your CSV will show below:</label>
+           <span class="ui-grid-exporter-csv-link">&nbsp;</span>
+         </div> -->
+      <div>
+          <div id = "grid1" class="grid" ui-grid="vm.gridOptions" ui-grid-auto-resize ui-grid-tree-view  ui-grid-selection ui-grid-exporter ui-grid-move-columns></div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{
+  "name": "employee",
+  "version": "1.0.0",
+  "description": "A mock employee manager ",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -a localhost -p 8080 -c-1 ./mock",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shubham Jain",
+  "license": "ISC",
+  "dependencies": {
+    "angular-toastr": "^2.1.1"
+  }
+}

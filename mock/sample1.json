@@ -1,0 +1,16 @@
+[
+{
+	"username":"user1", 
+	"name":"user1name", 
+	"email":"user1@gmail.com",
+	"createdon": "this.gettime()", 
+	"action":""
+},
+{
+	"username":"user1", 
+	"name":"user1name", 
+	"email":"user1@gmail.com",
+	"createdon": "this.gettime()", 
+	"action":""
+}
+]

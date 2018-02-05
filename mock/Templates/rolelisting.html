@@ -1,0 +1,26 @@
+<div class = "row">
+    <!-- side bar starts -->
+    <div class="col-md-offset-1 col-md-2">
+        <nav class="nav-sidebar">
+            <ul class="nav" ng-init = "activeid = 'rolelisting'">
+              <li ng-click="activeid='main'" ng-class = "{'active': activeid == 'main'}"  ><a ui-sref="main"><i class="fa fa-home" aria-hidden="true"></i> Dashboard</a></li>
+              <li ng-click="activeid='adduser'" ng-class = "{'active': activeid == 'adduser'}" ><a ui-sref="addUser">Add User</a></li>
+              <li ng-click="activeid='userlisting'" ng-class = "{'active': activeid == 'userlisting'}"><a ui-sref="userListing">User listing</a></li>
+              <li ng-click="activeid='applyLeave'" ng-class = "{'active': activeid == 'applyleave'}"><a ui-sref="applyLeave">Apply Leave</a></li>
+              <li ng-click="activeid='leavelisting'" ng-class = "{'active': activeid == 'leavelisting'}"><a ui-sref="leaveListing">Leave Listing</a></li>
+              <li ng-click="activeid='addrole'" ng-class = "{'active': activeid == 'addrole'}"><a ui-sref="addRole">Add Role</a></li>
+              <li  ng-click="activeid='rolelisting'" ng-class = "{'active': activeid == 'rolelisting'}"><a ui-sref="roleListing">Role Listing</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Side Bar Ends -->
+    <div class="col-md-6 col-md-offset-1">
+      <h1>Employee Roles</h1>
+      <hr/>
+      <br/>
+      <div>
+            <div id = "grid3" ui-grid="{ data : roles, columnDefs: columnDefs, enableFiltering : true, paginationPageSizes: [3,6,9],
+            paginationPageSize: 3 }" class="myGrid" ui-grid-pagination></div>
+      </div>
+     </div>
+</div>

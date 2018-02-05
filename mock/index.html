@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="EmployeeApp">
+<head>
+    <!-- <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <title>Employee Book</title>
+
+    <!-- font awesome cdn -->
+    <script src="https://use.fontawesome.com/54a6fd122d.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- angular cdn's -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <!-- <script src = "./lib/angular.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script> -->
+    <script src = "./lib/angular-ui-router.js"></script>
+
+    <!-- UI Bootstrap datetimepicker cdns-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-touch.js"></script>
+
+    <!-- <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script> -->
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.1.js"></script>
+    <script src = "./lib/moment-with-locales.min.js"></script>
+
+    <!-- UI GRID CDN's -->
+    <!-- <script src="http://ui-grid.info/release/ui-grid.js"></script>
+    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css"> -->
+
+    <!-- for edit button modal -->
+    <script src="https://cdn.rawgit.com/mike-marcacci/objectpath/v1.1.0/lib/ObjectPath.js"></script>
+    <script src="https://cdn.rawgit.com/geraintluff/tv4/v1.1.9/tv4.min.js"></script>
+    <script src="https://cdn.rawgit.com/Textalk/angular-schema-form/0.8.0/dist/schema-form.js"></script>
+    <script src="https://cdn.rawgit.com/Textalk/angular-schema-form/0.8.0/dist/bootstrap-decorator.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+    <link data-require="ui-grid@3.0.0RC20" data-semver="3.0.0RC20" rel="stylesheet" href="http://cdn.rawgit.com/angular-ui/ui-grid.info/gh-pages/release/3.0.0-rc.20/ui-grid.css" />
+    <script data-require="ui-grid@3.0.0RC20" data-semver="3.0.0RC20" src="http://cdn.rawgit.com/angular-ui/ui-grid.info/gh-pages/release/3.0.0-rc.20/ui-grid.js"></script>
+
+    <!-- Angular toastr -->
+    <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+    <!-- <script src = "./lib/angular-toastr.tpls.min.js"></script> -->
+    <!-- <script src = "../node_modules/angular-toastr/dist/angular-toastr.min.js"></script> -->
+    <!-- <link rel="stylesheet" href=".lib/angular-toastr.min.css">  -->
+
+    <!-- Export data in pdf and csv -->
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/lodash.min.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/jszip.min.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/excel-builder.dist.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-touch.js"></script>
+
+    <!-- UI GRID CDN's -->
+    <script src="http://ui-grid.info/release/ui-grid.js"></script>
+    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
+
+    <!-- theme ui-select -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Nav Bar Starts -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" ui-sref="#">Employee Book</a>
+            </div>
+            <!-- <ul class="nav navbar-nav"  ng-init = "activeid = 'main'">
+                <li ng-click="activeid='main'" ng-class = "{'active': activeid == 'main'}"><a ui-sref = "main">Dashboard <i class = "fa fa-home" aria-hidden="true"></i></a></li>
+                <li ng-click="activeid='leavelisting'" ng-class = "{'active': activeid == 'leavelisting'}"><a ui-sref = "leaveListing">Leave Manager</a></li>
+                <li ng-click="activeid='userlisting'" ng-class = "{'active': activeid == 'userlisting'}"><a ui-sref = "userListing">User Manager</a></li>
+            </ul> -->
+            <ul class="nav navbar-nav">
+                <li><a ui-sref = "main">Dashboard <i class = "fa fa-home" aria-hidden="true"></i></a></li>
+                <li><a ui-sref = "" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">User Manager<span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                  <li><a ui-sref = "addUser">Add User</a></li>
+                                  <li><a ui-sref = "userListing">User Listing</a></li>
+                    </ul>
+                </li>
+                <li><a ui-sref = "" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Leave Manager<span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                  <li><a ui-sref = "applyLeave">Apply Leave</a></li>
+                                  <li><a ui-sref = "leaveListing">Leave Listing</a></li>
+                    </ul>
+                </li>
+                <li><a ui-sref = "" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Role Manager<span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                  <li><a ui-sref = "addRole">Add Role</a></li>
+                                  <li><a ui-sref = "roleListing">Role Listing</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Nav Bar Ends -->
+
+    <br/><br/>
+
+    <div>
+        <div ui-view></div>
+    </div>
+      <script src = "app.js"></script>
+      <script src = "./Controllers/userCtrl.js"></script>
+      <script src = "./Controllers/userListCtrl.js"></script>
+      <script src = "./Controllers/leaveCtrl.js"></script>
+      <script src = "./Controllers/leaveListCtrl.js"></script>
+      <script src = "./Controllers/roleCtrl.js"></script>
+      <script src = "./Controllers/roleListCtrl.js"></script>
+      <script src = "./Controllers/mainCtrl.js"></script>
+      <script src = "./Services/RowEditor.js"></script>
+      <script src = "./Services/service.js"></script>
+      <!-- <script src = "./Services/DataService.js"></script>
+      <script src = "./Services/LeaveService.js"></script> -->
+
+</body>
+</html>

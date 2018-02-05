@@ -1,0 +1,40 @@
+<div class = "row">
+    <!-- side bar starts -->
+    <div class="col-md-offset-1 col-md-2">
+        <nav class="nav-sidebar">
+            <ul class="nav" ng-init = "activeid = 'addrole'">
+              <li ng-click="activeid='main'" ng-class = "{'active': activeid == 'main'}"  ><a ui-sref="main"><i class="fa fa-home" aria-hidden="true"></i> Dashboard</a></li>
+              <li ng-click="activeid='adduser'" ng-class = "{'active': activeid == 'adduser'}" ><a ui-sref="addUser">Add User</a></li>
+              <li ng-click="activeid='leavelisting'" ng-class = "{'active': activeid == 'leavelisting'}"><a ui-sref="userListing">User listing</a></li>
+              <li ng-click="activeid='applyLeave'" ng-class = "{'active': activeid == 'applyleave'}"><a ui-sref="applyLeave">Apply Leave</a></li>
+              <li ng-click="activeid='leavelisting'" ng-class = "{'active': activeid == 'leavelisting'}"><a ui-sref="leaveListing">Leave Listing</a></li>
+              <li ng-click="activeid='addrole'" ng-class = "{'active': activeid == 'addrole'}"><a ui-sref="addRole">Add Role</a></li>
+              <li  ng-click="activeid='rolelisting'" ng-class = "{'active': activeid == 'rolelisting'}"><a ui-sref="roleListing">Role Listing</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Side Bar Ends -->
+    <div class="col-md-6 col-md-offset-1">
+      <div class="forms">
+      <h1>Add Role</h1>
+      <div class="row">
+          <div class="col-md-7">
+            <hr/>
+              <form ng-submit = "addRole()">
+
+                <div class="form-group row">
+                    <label for="role" class="col-sm-5 col-form-label">Add a Role </label>
+                    <div class="col-sm-7">
+                        <input type="text" required ng-model = "newrole" class="form-control" placeholder="Add a Role" >
+                    </div>
+                </div>
+
+                <hr/>
+                <div class="form-group row">
+                    <button type="submit" value="Submit" class="btn btn-primary col-sm-5 col-sm-offset-4">SUBMIT</button>
+                </div>
+              </form>
+          </div>
+      </div>
+    </div>
+</div>
