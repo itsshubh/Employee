@@ -53,6 +53,26 @@ textarea{
 body{
   overflow-x: hidden;
 }
+.ui-grid-row .ui-grid-cell {
+   background-color: inherit !important;
+   color: inherit !important;
+}
+
+.ui-grid-row .ui-grid-cell.ui-grid-cell {
+    background-color: #f0f0ee;
+    border-bottom: solid 1px #d4d4d4;
+}
+
+.rowLevel-0{
+  background-color: #EEEEEE;
+  color: black;
+}
+
+.rowLevel-1{
+  background-color: #FAFAFA;
+  color: black;
+}
+
 /* select option{
   color: black;
 } */

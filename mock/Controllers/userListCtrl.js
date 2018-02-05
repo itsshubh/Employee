@@ -2,6 +2,21 @@
   var module = angular.module("EmployeeApp");
 
   var userListCtrl = function($http, $scope, RowEditor, service) {
+        var rowtpl = '';
+       rowtpl += '<div class=\"{{grid.appScope.rowLevel(row)}}\">';
+       rowtpl += '<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name"';
+       rowtpl +=   'class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }" ui-grid-cell>';
+       rowtpl += '</div>';
+       rowtpl += '</div>';
+       $scope.rowLevel = function(row){
+         var cls = '';
+         if(row.treeLevel != void 0){
+           cls = 'rowLevel-' + row.treeLevel;
+         }
+         return cls;
+       }
+
+
         $scope.editRowa = function(row){
             row.status='Activated';
         }
@@ -14,6 +29,7 @@
         // vm.editRowr = RowEditor.editRowr;
         vm.editRow  = RowEditor.editRow;
         vm.gridOptions = {
+          rowTemplate: rowtpl,
           columnDefs: [
             // { name: 's.no.', cellTemplate:`<div style="margin-left:50%"> {{rowRenderIndex+1}} </div>`},
             { name: 'role'},
@@ -44,7 +60,7 @@
           modifierKeysToMultiSelect: false,
           onRegisterApi: function(gridApi){
             $scope.gridApi = gridApi;
-          }
+          },
         };
         // getting all the roles
         $scope.vari = service.getRoleData();
@@ -55,6 +71,19 @@
             }
         });
 
+        var rowtpl = '';
+         rowtpl += '<div class=\"{{grid.appScope.rowLevel(row)}}\">';
+         rowtpl += '<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name"';
+         rowtpl +=   'class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }" ui-grid-cell>';
+         rowtpl += '</div>';
+         rowtpl += '</div>';
+        $scope.rowLevel = function(row){
+          var cls = '';
+          if(row.treeLevel != void 0){
+            cls = 'rowLevel-' + row.treeLevel;
+          }
+          return cls;
+        };
         vm.gridOptions.data1 = service.getUserData();
 
         vm.gridOptions.data2 = [];
@@ -80,6 +109,7 @@
           writeoutNode( childNode.children, currentLevel + 1, dataArray );
         });
       };
+
 
     vm.gridOptions.data = [];
     writeoutNode( vm.gridOptions.data2, 0, vm.gridOptions.data );
