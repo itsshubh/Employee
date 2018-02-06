@@ -72,7 +72,9 @@ body{
   background-color: #FAFAFA;
   color: black;
 }
-
+input:invalid {
+    border: 1px solid red;
+}
 /* select option{
   color: black;
 } */

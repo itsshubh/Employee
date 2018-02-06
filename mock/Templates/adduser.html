@@ -19,11 +19,13 @@
       <div class="row">
           <div class="col-md-7">
             <hr/>
-              <form name = "myForm" ng-submit = "addUser()">
+              <form name = "myForm" ng-submit="addUser(myForm.$valid)">
                 <div class="form-group row">
                     <label for="username" class="col-sm-5 col-form-label">Username </label>
                     <div class="col-sm-7">
-                        <input type="text" required ng-model = "newusername" class="form-control" placeholder="Username" >
+                        <input type="text" name="username" required ng-model = "newusername" class="form-control" placeholder="Username" ng-minlength="5" ng-maxlength="10">
+                        <p style="color:red" ng-show="myForm.username.$error.minlength" class="help-block">Username is too short.</p>
+                        <p style="color:red" ng-show="myForm.username.$error.maxlength" class="help-block">Username is too long.</p>
                     </div>
                 </div>
 
@@ -31,30 +33,32 @@
                 <div class="form-group row">
                     <label for="fullname" class="col-sm-5 col-form-label">Full Name </label>
                     <div class="col-sm-7">
-                        <input type="text" required ng-model = "newname" class="form-control" placeholder="Full Name" >
+                        <input type="text" name="name" required ng-model = "newname" class="form-control" placeholder="Full Name" >
+                        <p ng-show="myForm.name.$invalid && !myForm.name.$pristine" class="help-block">Your name is required.</p>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="password" class="col-sm-5 col-form-label">Password </label>
                     <div class="col-sm-7">
-                        <input type="password" id="password" name="password" required class="form-control" placeholder="Enter password" ng-model="password" pattern=".{6,10}">
+                        <input type="password" placeholder="Enter password" name="password" required class="form-control" ng-model="password" pattern=".{6,10}">
                         <span style="color:red" ng-if="myForm.password.$invalid && myForm.password.$dirty ">Passwords must be between 6 and 10 characters.</span>
+                        <!-- <div class="error-message" ng-show="form.password.$invalid && !form.password.$pristine">Passwords must have at least 2 chars.</div> -->
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="confirmPassword" class="col-sm-5 col-form-label">Confirm Password </label>
                     <div class="col-sm-7">
-                        <input type="password" class="form-control" placeholder="Enter password again" id="password_c" name="password_c" ng-model="password_c" valid-password-c required />
-                        <span style="color:red" ng-if="myForm.password_c.$invalid && myForm.password_c.$dirty " ng-show="!myForm.password_c.$error.required && myForm.password_c.$error.noMatch && myForm.password.$dirty">Passwords do not match.</span>
-                    </div>
+                        <input type="password" placeholder="Enter password again" name="check1" required class="form-control" ng-model="check"  wj-validation-error="check != password ? 'Passwords don\'t match' : ''" />
+                        <div style="color:red" class="error-message" ng-show="myForm.check1.$invalid && !myForm.check1.$pristine">Sorry, the passwords don't match.</div>
+                      </div>
                 </div>
-
                 <div class="form-group row">
                     <label for="email" class="col-sm-5 col-form-label">Email </label>
                     <div class="col-sm-7">
                         <input type="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" placeholder="Email" ng-model="newemail">
+                        <p style="color:red" ng-show="myForm.email.$invalid && !myForm.email.$pristine" class="help-block">Enter a valid email.</p>
                     </div>
                 </div>
 
@@ -93,7 +97,7 @@
                 </div>
                 <hr/>
                 <div class="form-group row">
-                  <button type="submit" type="submit" value="Submit" class="btn btn-primary col-sm-5 col-sm-offset-4">SUBMIT</button>
+                  <button type="submit" type="submit" ng-disabled="myForm.$invalid" value="Submit" class="btn btn-primary col-sm-5 col-sm-offset-4">SUBMIT</button>
                 </div>
               </form>
           </div>

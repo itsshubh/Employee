@@ -41,16 +41,27 @@
       }
   };
   module.controller("userCtrl", userCtrl);
-  module.directive('validPasswordC', function () {
+//   module.directive('validPasswordC', function () {
+//     return {
+//         require: 'ngModel',
+//         link: function (scope, elm, attrs, ctrl) {
+//             ctrl.$parsers.unshift(function (viewValue, $scope) {
+//                 var noMatch = viewValue != scope.myForm.password.$viewValue
+//                 ctrl.$setValidity('noMatch', !noMatch)
+//             })
+//         }
+//     }
+// });
+  module.directive('wjValidationError', function () {
     return {
-        require: 'ngModel',
-        link: function (scope, elm, attrs, ctrl) {
-            ctrl.$parsers.unshift(function (viewValue, $scope) {
-                var noMatch = viewValue != scope.myForm.password.$viewValue
-                ctrl.$setValidity('noMatch', !noMatch)
-            })
-        }
-    }
-});
+      require: 'ngModel',
+      link: function (scope, elm, attrs, ctl) {
+        scope.$watch(attrs['wjValidationError'], function (errorMsg) {
+          elm[0].setCustomValidity(errorMsg);
+          ctl.$setValidity('wjValidationError', errorMsg ? false : true);
+        });
+      }
+    };
+  });
 
 }());
